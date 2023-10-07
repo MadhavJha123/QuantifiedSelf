@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracker Details</title>
+  <style>
+    h1 {
+       text-shadow:5px 5px 10px black;
+       }
+    table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+  table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+  body {
+  font-family: "Trirong", serif;
+    margin-bottom:500px;
+}  
+  </style>
+</head>
+<body style='background-image: linear-gradient(pink, lightblue);'>
+  <h1>Hello,{{username}}</h1>
+    <h2 style='color:#f44336;'><u>{{t_name}}-Tracker</u></h2><br>
+  <img src="/static/my_plot.png" height='300' width='600'>
+  <h3> <a href='/show/{{t_name}}'>Go back</a></h3>
+  <h2 style="text-align: center;"><u>Logs</u></h2>
+  <table class='center'> 
+  <thead style='background-color:#3973ac';>
+    <tr><h3>
+      <th scope="col">Tracked on</th>
+      <th scope="col">Value</th>
+      <th scope="col">Description</th>
+      <th scope="col" colspan='2'>Actions</th></h3>
+    </tr>
+  </thead>
+  {% for event in events %}
+  <tbody>
+    <tr style='background-color:#d8e5f3;'>
+      <td>{{event.date}}</td>
+      <td>{{event.value}}</td>
+      <td>{{event.notes}}</td>
+      <td> <a href="/e_update/{{event.event_id}}" 
+        style='background-color: blue;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        -moz-border-radius: 20px;  
+        -webkit-border-radius: 20px; 
+         box-shadow: 0 5px 15px rgba(145, 92, 182, .4);'>Update</a>
+      </td>
+      <td> <a href="/e_delete/{{event.event_id}}"
+             style='background-color: red;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            -moz-border-radius: 20px;  
+            -webkit-border-radius: 20px;
+             box-shadow: 0 5px 15px rgba(145, 92, 
+             182, .4);'>Delete</a>
+      </td>
+    </tr>
+  </tbody>
+   {% endfor %}
+   
+ </table>  <br><br>
+  <h2 style=text-align:left;>
+     <a href='{{url_for("home")}}'
+      style='background-color: red;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            -moz-border-radius: 20px;  
+            -webkit-border-radius: 20px;
+            m box-shadow: 0 5px 15px rgba(145, 92, 
+            182, .4);' >log out</a>
+   </h2>  
+  
+</body>
+</html>

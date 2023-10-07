@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a Tracker</title>
+  <style type="text/css">  
+       * {  
+              margin: 0px;  
+              padding: 0px;outline: none;  
+       }  
+       body {  
+          font-family: "Trirong", serif;
+              background-image: linear-gradient(pink, 
+              lightblue);
+         margin-bottom:500px;
+             
+       }  
+       h1 {
+           text-shadow: 5px 5px 10px black;
+          }
+       form {  
+              border: 1px solid #270644;  
+              width: 250px;  
+              -moz-border-radius: 20px;  
+              -webkit-border-radius: 20px;  
+              background:  -moz-linear-gradient(19% 
+              75% 90deg,#CC66FF, #66FFFF);  
+              background:-webkit-gradient(linear, 0%              0%, 0% 100%, from(#66FFFF), 
+              to(#CC66FF));  
+              margin:50px auto;  
+              padding: 20px;  
+              -moz-box-shadow:0px -5px 300px 
+              #270644;  
+              -webkit-box-shadow:0px -5px 300px 
+               #270644;  
+       }  
+       label {  
+              font-size: 14px;  
+              font-family: arial, sans-serif;  
+              list-style-type: none;  
+              color: Tomato;    
+              margin-bottom: 10px;  
+              font-weight: bold;  
+              letter-spacing: 1px;  
+              text-transform: uppercase;  
+              display: block;  
+       }  
+       input {  
+         -webkit-transition-property: -webkit-box- 
+           shadow, background;  
+         -webkit-transition-duration: 0.25s;  
+              padding: 6px;  
+              border-bottom: 0px;  
+              border-left: 0px;  
+              border-right: 0px;  
+              border-top: 1px solid #ad64e0;        
+              margin-bottom: 10px;  
+              background: #0099FF;  
+              width: 230px;  
+       }  
+       input.submit {  
+         -webkit-transition-property: -webkit-box- 
+          shadow, background;  
+         -webkit-transition-duration: 0.25s;  
+              width: 100px;  
+              background: -webkit-gradient(linear, 
+              0% 0%, 0% 100%, from(#66FFFF), 
+              to(#781bb9));   
+              background:  -moz-linear-gradient(19% 
+              75% 90deg,#781bb9, #66FFFF);  
+              color: #fff;  
+              text-transform: uppercase;  
+              text-shadow: #000 1px 1px;  
+              border-top: 1px solid #ad64e0;  
+              margin-top: 10px;  
+       }  
+       input.submit:hover {  
+              -webkit-box-shadow: 0px 0px 2px #000;  
+              background: -webkit-gradient(linear, 
+              0% 0%, 0% 100%, from(#66FFFF), 
+              to(#781bb9));  
+              background:  -moz-linear-gradient(19% 
+              75% 90deg,#781bb9, #66FFFF);  
+       }   
+       input.submit:active {  
+              background: -webkit-gradient(linear, 
+              0% 0%, 0% 100%, from(#781bb9), 
+              to(#66FFFF));  
+              background:  -moz-linear-gradient(19% 
+              75% 90deg,#66FFFF, #781bb9);  
+       }  
+       input:hover {  
+              -webkit-box-shadow: 0px 0px 4px #000; 
+              background: #9d39e1;  
+       }  
+</style>     
+</head>
+<body>
+  <h1>Hello,{{username}}</h1>
+  <h3><i>Add a Tracker</i></h3>
+<form action='/view/{{username}}' method="POST" id="create-form">
+  <div class="form-row">
+    
+      <label>Name of Tracker</label>
+      <input type='text'name='t_name' class="form-control" required>
+    </div><br>
+  <div class="form-group">
+    <label >Description(optional)</label>
+    <input type="text" name='desc' class="form-control">
+  </div><br>
+   
+    <div class="form-group col-md-4">
+      <label for="inputState">Tracker type</label>
+      <select class="form-control" id="tracker" name="tracker" onchange="showHideSettings(this)" required>
+        <option selected>Type</option>
+        <option value="numerical">Numerical </option>
+        <option value="mso">Multiple Choice</option>
+      </select>
+    </div><br>
+  <div class='form-row' id="settings_div" style="display:none;">
+      <label for='inputCity'>Options(Give at least two)</label>
+      <input type='text' name='setting'  id='settings'placeholder="Only comma seperated values"></div>
+
+   <script type="text/javascript">
+function showHideSettings(select){
+   if(select.value=="mso"){
+    document.getElementById('settings_div').style.display = "block";
+   } else{
+    document.getElementById('settings_div').style.display = "none";
+   }
+} 
+</script>  
+   <br>
+  <input type="submit" value="Add"
+                 name="submit" class="submit" />  
+</form>  
+</body>
+</html>
